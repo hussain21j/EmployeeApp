@@ -1,0 +1,47 @@
+<html ng-app="myModule-fileter-app">
+
+<head>
+    <script src="angular.js"></script>
+    <script src="filter-app.js"></script>
+    <link href="filter-app-style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div ng-controller="filterAppController">
+        <label>Select number of rows you want to dispaly   :<input type="number" id="input_row_count" step="1" min="0" max="10" ng-model="rowCount">
+        <br>
+        <label></label> Select the order by : <select ng-model="columnSelected">
+            <option value="none">--Select--</option>
+            <option value="name">By Name</option>
+            <option value="salery">By Salery Asc</option>
+        </select>
+        <br><br> Search :<input type="text" placeholder="Search employee" ng-model="searchText">
+        <br><br>
+        <table>
+            <thead>
+                <th ng-click="sortData('name')">Name
+                    <div class="arrow_up" ng-class="getSortStyleClass('name')"></div>
+                </th>
+                <th ng-click="sortData('gender')">gender
+                    <div ng-class="getSortStyleClass('gender')"></div>
+                </th>
+                <th ng-click="sortData('dob')">DOB
+                    <div ng-class="getSortStyleClass('dob')"></div>
+                </th>
+                <th ng-click="sortData('salery')">salery-currency
+                    <div ng-class="getSortStyleClass('salery')"></div>
+                </th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employeeList | limitTo:rowCount:0 | filter:searchText |orderBy: sortColumnName:reverseSort">
+                    <td>{{employee.name | uppercase}}</td>
+                    <td>{{employee.gender | uppercase}}</td>
+                    <td>{{employee.dob | date:"dd/MM/yyyy"}}</td>
+                    <td>{{employee.salery | currency:"$"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

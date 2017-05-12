@@ -1,0 +1,38 @@
+body{
+    font-family: Arial;
+}
+table{
+    border-collapse: collapse;
+}
+td{
+    border: 1px solid black;
+    padding: 5px;
+}
+th{
+    border: 1px solid black;
+    text-align: left;
+    padding: 5px;
+    background-color: grey;
+    cursor: pointer;
+}
+#input_row_count{
+    background-color: green;
+}
+
+.arrow_up{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid black;
+    display: inline-block;
+}
+
+.arrow_down {
+   width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid black;
+    display: inline-block;
+}
